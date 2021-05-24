@@ -1,0 +1,80 @@
+package trees.binarytrees;
+
+import trees.binarytrees.BinaryTree.*;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class LeftViewOfBinaryTree {
+
+    public static int maxLevel = 0;
+
+    public static void main(String[] args) {
+
+        BinaryTree binaryTree = new BinaryTree();
+        TreeNode rootNode = binaryTree.getHeadNode();
+
+        rootNode = new BinaryTree.TreeNode(4);
+        rootNode.left = new BinaryTree.TreeNode(5);
+        rootNode.right = new BinaryTree.TreeNode(2);
+
+        rootNode.right.left = new BinaryTree.TreeNode(3);
+        rootNode.right.right = new BinaryTree.TreeNode(1);
+
+        rootNode.right.left.left = new BinaryTree.TreeNode(6);
+        rootNode.right.left.right = new BinaryTree.TreeNode(7);
+
+        printLeftViewOfBinaryTree(rootNode, 1);
+        System.out.println();
+        printLeftViewUsingQueue(rootNode);
+        System.out.println();
+    }
+
+
+    public static void printLeftViewOfBinaryTree (TreeNode node, int level) {
+
+        if (node == null) {
+            return;
+        }
+
+        if (maxLevel < level) {
+            System.out.print(node.data + " ");
+            maxLevel = level;
+        }
+
+        printLeftViewOfBinaryTree(node.left, level + 1);
+        printLeftViewOfBinaryTree(node.right, level + 1);
+    }
+
+    public static void printLeftViewUsingQueue (TreeNode node) {
+
+        if (node == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(node);
+
+        while (!queue.isEmpty()) {
+
+            int nodeCount = queue.size();
+
+            for (int i = 1; i <= nodeCount; i++) {
+
+                TreeNode tempNode = queue.poll();
+
+                if (i == 1) {
+                    System.out.print(tempNode.data + " ");
+                }
+
+                if (tempNode.left != null) {
+                    queue.offer(tempNode.left);
+                }
+
+                if (tempNode.right != null) {
+                    queue.offer(tempNode.right);
+                }
+            }
+        }
+    }
+}
