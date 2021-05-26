@@ -2,9 +2,12 @@ package trees.binarytrees;
 
 import trees.binarytrees.BinaryTree.TreeNode;
 
+import java.util.HashMap;
+
 public class BuildTreeFromPreAndInOrder {
 
-    public static int preOrderIndex = 0;
+    public static int preOrderIndexIterative = 0;
+    public static int preOrderIndexRecursive = 0;
 
     public static void main(String[] args) {
 
@@ -13,6 +16,9 @@ public class BuildTreeFromPreAndInOrder {
 
         TreeNode builtTree = buildTree(preOrder, inOrder, 0, inOrder.length - 1);
         PostOrderTraversal.postOrderTraversal(builtTree);
+        System.out.println();
+        TreeNode builtTreeUsingRecursion = buildTreeRecursive(preOrder, inOrder, 0, inOrder.length - 1);
+        PostOrderTraversal.postOrderTraversal(builtTreeUsingRecursion);
     }
 
     public static TreeNode buildTree (int[] preOrder, int[] inOrder, int inStart, int inEnd) {
@@ -21,7 +27,7 @@ public class BuildTreeFromPreAndInOrder {
             return null;
         }
 
-        TreeNode tempNode = new TreeNode(preOrder[preOrderIndex++]);
+        TreeNode tempNode = new TreeNode(preOrder[preOrderIndexIterative++]);
 
         if (inStart == inEnd) {
             return tempNode;
@@ -43,5 +49,36 @@ public class BuildTreeFromPreAndInOrder {
             }
         }
         return -1;
+    }
+
+    public static TreeNode buildTreeRecursive (int[] preOrder, int[] inOrder, int inStart, int inEnd) {
+
+        HashMap<Integer, Integer> inOrderTraversalMap = new HashMap<>();
+        for (int i = 0; i < inOrder.length; i++) {
+            inOrderTraversalMap.put (inOrder[i], i);
+        }
+
+        return buildTreeRecursiveUtil(preOrder, inStart, inEnd, inOrderTraversalMap);
+    }
+
+    private static TreeNode buildTreeRecursiveUtil(int[] preOrder, int inStart, int inEnd,
+                                                   HashMap<Integer, Integer> inOrderTraversalMap) {
+
+        if (inStart > inEnd) {
+            return null;
+        }
+
+        TreeNode node = new TreeNode (preOrder[preOrderIndexRecursive++]);
+
+        if (inStart == inEnd) {
+            return node;
+        }
+
+        int inIndex = inOrderTraversalMap.get (node.data);
+
+        node.left = buildTreeRecursiveUtil(preOrder, inStart, inIndex - 1, inOrderTraversalMap);
+        node.right = buildTreeRecursiveUtil(preOrder, inIndex + 1, inEnd, inOrderTraversalMap);
+
+        return node;
     }
 }
