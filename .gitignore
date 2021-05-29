@@ -1,2 +1,4 @@
 # Project exclude paths
 /out/
+.idea/dbnavigator.xml
+.idea/vcs.xml
