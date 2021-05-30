@@ -60,13 +60,13 @@ public class DjikstraAlgorithm {
 
         for (int count = 0; count < this.numVertices - 1; count++) {
 
-            System.out.println("*********************************************************************");
-            System.out.println("Count : " + count);
-            System.out.println(Arrays.toString(distance));
-            System.out.println(Arrays.toString(sptSet));
+//            System.out.println("*********************************************************************");
+//            System.out.println("Count : " + count);
+//            System.out.println(Arrays.toString(distance));
+//            System.out.println(Arrays.toString(sptSet));
             int minimumDistanceVertex = findMinimumDistanceVertex (distance, sptSet);
-            System.out.println("Minimum Distance Vertex : " + minimumDistanceVertex);
-            System.out.println("*********************************************************************");
+//            System.out.println("Minimum Distance Vertex : " + minimumDistanceVertex);
+//            System.out.println("*********************************************************************");
             sptSet[minimumDistanceVertex] = true;
 
             for (int eachVertex = 0; eachVertex < this.numVertices; eachVertex++) {
@@ -74,9 +74,9 @@ public class DjikstraAlgorithm {
                 if (!sptSet[eachVertex] && this.adjacencyMatrix[minimumDistanceVertex][eachVertex] != 0 &&
                         distance[minimumDistanceVertex] != Integer.MAX_VALUE &&
                                 distance[minimumDistanceVertex] + this.adjacencyMatrix[minimumDistanceVertex][eachVertex] < distance[eachVertex]) {
-                    System.out.println("######################################################################");
-                    System.out.println("Minimum Distance Vertex : [" + minimumDistanceVertex + "], Each Vertex : [" + eachVertex + "]");
-                    System.out.println("######################################################################");
+//                    System.out.println("######################################################################");
+//                    System.out.println("Minimum Distance Vertex : [" + minimumDistanceVertex + "], Each Vertex : [" + eachVertex + "]");
+//                    System.out.println("######################################################################");
                     distance[eachVertex] = distance[minimumDistanceVertex] + this.adjacencyMatrix[minimumDistanceVertex][eachVertex];
                 }
             }
