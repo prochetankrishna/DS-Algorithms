@@ -2,12 +2,15 @@ package trees.binarysearchtree;
 
 import trees.binarysearchtree.BinarySearchTree.Node;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class InOrderSuccessorInBST {
 
     public static void main(String[] args) {
 
-        int searchForNodeValue = 40;
-        int[] arr = {50, 30, 20, 40, 70, 60, 80};
+        int searchForNodeValue = 14;
+        int[] arr = {20, 8, 22, 4, 12, 10, 14};
         BinarySearchTree binarySearchTree = new BinarySearchTree();
 
         for (int i = 0; i < arr.length; i++) {

@@ -120,6 +120,21 @@ public class BSTInsertionAndDeletion {
         }
     }
 
+    public boolean searchBST (BSTNode rootNode, int key) {
+
+        if (rootNode == null) {
+            return false;
+        }
+
+        if (rootNode.data == key) {
+            return true;
+        } else if (rootNode.data > key) {
+            return searchBST (rootNode.left, key);
+        } else {
+            return searchBST (rootNode.right, key);
+        }
+    }
+
     public static void main(String[] args) {
 
         BSTInsertionAndDeletion bstTree = new BSTInsertionAndDeletion();
@@ -139,5 +154,7 @@ public class BSTInsertionAndDeletion {
         System.out.println();
         bstTree.postOrderTraversal(bstTree.rootNode);
         System.out.println();
+        System.out.println("Is Node with Value 21 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 21));
+        System.out.println("Is Node with Value 14 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 14));
     }
 }
