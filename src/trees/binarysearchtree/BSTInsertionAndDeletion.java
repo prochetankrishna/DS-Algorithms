@@ -1,5 +1,6 @@
 package trees.binarysearchtree;
 
+import java.sql.SQLOutput;
 import java.util.Stack;
 
 public class BSTInsertionAndDeletion {
@@ -31,8 +32,10 @@ public class BSTInsertionAndDeletion {
 
         if (rootNode.data > data) {
             rootNode.left = insertNode(rootNode.left, data);
-        } else {
+        } else if (rootNode.data < data) {
             rootNode.right = insertNode(rootNode.right, data);
+        } else {
+            System.out.println("Duplicates are not allowed");
         }
         return rootNode;
     }
@@ -135,6 +138,40 @@ public class BSTInsertionAndDeletion {
         }
     }
 
+    public BSTNode deleteNode (BSTNode rootNode, int data) {
+
+        if (rootNode == null) {
+            System.out.println("BST is Empty ! Can't Delete.");
+            return null;
+        }
+
+        if (rootNode.data > data) {
+            rootNode.left = deleteNode(rootNode.left, data);
+        } else if (rootNode.data < data) {
+            rootNode.right = deleteNode(rootNode.right, data);
+        } else {
+
+            if (rootNode.left == null) {
+                return rootNode.right;
+            } else if (rootNode.right == null) {
+                return rootNode.left;
+            }
+
+            rootNode.data = findInorderSuccessor(rootNode.right);
+            rootNode.right = deleteNode(rootNode.right, rootNode.data);
+        }
+        return rootNode;
+    }
+
+    public int findInorderSuccessor (BSTNode node) {
+
+        BSTNode temp = node;
+        while (temp.left != null) {
+            temp = temp.left;
+        }
+        return temp.data;
+    }
+
     public static void main(String[] args) {
 
         BSTInsertionAndDeletion bstTree = new BSTInsertionAndDeletion();
@@ -148,13 +185,17 @@ public class BSTInsertionAndDeletion {
         bstTree.insertNode(7);
         bstTree.insertNode(13);
 
-        bstTree.preOrderTraversal(bstTree.rootNode);
-        System.out.println();
+//        bstTree.preOrderTraversal(bstTree.rootNode);
+//        System.out.println();
         bstTree.inOrderTraversal(bstTree.rootNode);
-        System.out.println();
-        bstTree.postOrderTraversal(bstTree.rootNode);
-        System.out.println();
-        System.out.println("Is Node with Value 21 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 21));
-        System.out.println("Is Node with Value 14 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 14));
+//        System.out.println();
+//        bstTree.postOrderTraversal(bstTree.rootNode);
+//        System.out.println();
+        System.out.println("Is Node with Value 8 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 8));
+//        System.out.println("Is Node with Value 14 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 14));
+
+        bstTree.deleteNode(bstTree.rootNode, 8);
+        bstTree.inOrderTraversal(bstTree.rootNode);
+        System.out.println("Is Node with Value 8 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 8));
     }
 }
