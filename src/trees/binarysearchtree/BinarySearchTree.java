@@ -32,8 +32,10 @@ public class BinarySearchTree {
 
         if (rootNode.data > data) {
             rootNode.left = insertNode (rootNode.left, data);
-        } else {
+        } else if (rootNode.data < data) {
             rootNode.right = insertNode (rootNode.right, data);
+        } else {
+            System.out.println("Duplicates not allowed");
         }
         return rootNode;
     }

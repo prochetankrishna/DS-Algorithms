@@ -243,6 +243,100 @@ class LinkedListUtil {
         return false;
     }
 
+    public Node reverseLinkedListRecursive (Node rootNode) {
+
+        if (rootNode == null || rootNode.next == null) {
+            return rootNode;
+        }
+
+        Node tempNode = this.reverseLinkedListRecursive(rootNode.next);
+        rootNode.next.next = rootNode;
+        rootNode.next = null;
+
+        return tempNode;
+    }
+
+    public Node reverseLinkedListIterative (Node rootNode) {
+
+        if (rootNode == null || rootNode.next == null) {
+            return rootNode;
+        }
+
+        Node prevNode = null;
+        Node currentNode = rootNode;
+        Node nextNode = null;
+
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        return prevNode;
+    }
+
+    public Node getMiddleNodeOfLinkedList (Node rootNode) {
+
+        if (rootNode == null) {
+            return rootNode;
+        }
+
+        Node fastPtr = rootNode.next;
+        Node slowPtr = rootNode;
+
+        while (fastPtr != null && fastPtr.next != null) {
+
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+        }
+        return slowPtr;
+    }
+
+    public Node sortLinkedList (Node rootNode) {
+
+        if (rootNode == null || rootNode.next == null) {
+            return rootNode;
+        }
+
+        Node middleNode = this.getMiddleNodeOfLinkedList(rootNode);
+        Node secondHalf = middleNode.next;
+        middleNode.next = null;
+
+        return performMergeAndSort (sortLinkedList(rootNode), sortLinkedList(secondHalf));
+    }
+
+    public Node performMergeAndSort (Node firstHalf, Node secondHalf) {
+
+        Node tempNode = new Node();
+        Node result = tempNode;
+
+        while (firstHalf != null && secondHalf != null) {
+
+            if (firstHalf.data < secondHalf.data) {
+                tempNode.next = firstHalf;
+                firstHalf = firstHalf.next;
+            } else if (firstHalf.data > secondHalf.data){
+                tempNode.next = secondHalf;
+                secondHalf = secondHalf.next;
+            }
+            //Remove Duplicates
+//            else {
+//                //Equal
+//                tempNode.next = firstHalf;
+//                firstHalf = firstHalf.next;
+//                secondHalf = secondHalf.next;
+//            }
+            tempNode = tempNode.next;
+        }
+
+        if (firstHalf != null) {
+            tempNode.next = firstHalf;
+        } else {
+            tempNode.next = secondHalf;
+        }
+        return result.next;
+    }
+
     public void printLinkedListIterative (Node rootNode) {
 
         if (rootNode == null) {
@@ -294,6 +388,15 @@ public class LinkedListADT {
         System.out.println(linkedListUtil.searchInLinkedListRecursive(rootNode, 25));
         System.out.println(linkedListUtil.searchInLinkedListIterative(rootNode, 56));
         System.out.println(linkedListUtil.searchInLinkedListRecursive(rootNode, 56));
-
+        linkedListUtil.printLinkedListIterative(rootNode);
+        rootNode = linkedListUtil.reverseLinkedListRecursive(rootNode);
+        linkedListUtil.printLinkedListIterative(rootNode);
+        rootNode = linkedListUtil.reverseLinkedListIterative(rootNode);
+        linkedListUtil.printLinkedListIterative(rootNode);
+        System.out.println("Value of Middle Node is : " + linkedListUtil.getMiddleNodeOfLinkedList(rootNode).data);
+        rootNode = linkedListUtil.insertAtFrontBegin(rootNode,12);
+        linkedListUtil.printLinkedListRecursive(rootNode);
+        rootNode = linkedListUtil.sortLinkedList(rootNode);
+        linkedListUtil.printLinkedListRecursive(rootNode);
     }
 }
