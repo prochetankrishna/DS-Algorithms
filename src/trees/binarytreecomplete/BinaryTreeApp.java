@@ -1,6 +1,4 @@
-package trees.binarytreecourse;
-
-import com.sun.source.tree.Tree;
+package trees.binarytreecomplete;
 
 import java.util.LinkedList;
 import java.util.Queue;
