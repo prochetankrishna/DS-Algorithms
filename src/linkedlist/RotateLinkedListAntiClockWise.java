@@ -6,13 +6,13 @@ public class RotateLinkedListAntiClockWise extends LinkedListUtil{
 
         RotateLinkedListAntiClockWise linkedListUtil = new RotateLinkedListAntiClockWise();
         Node rootNode = null;
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 12);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 99);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 37);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 8);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 18);
+        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
+        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
+        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
+        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 4);
+        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 5);
         linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.rotateLinkedListAntiClockWise(rootNode, 2);
+        rootNode = linkedListUtil.rotateLinkedListAntiClockWise(rootNode, 1);
         linkedListUtil.printLinkedListIterative(rootNode);
     }
 
