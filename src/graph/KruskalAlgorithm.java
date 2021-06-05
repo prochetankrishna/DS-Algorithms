@@ -122,12 +122,12 @@ public class KruskalAlgorithm {
 
             Edge currentEdge = this.edges[nextEdgeIndex++];
 
-            int srcRoot = find (subsets, currentEdge.source);
-            int destRoot = find (subsets, currentEdge.destination);
+            int srcParent = findParent (subsets, currentEdge.source);
+            int destParent = findParent (subsets, currentEdge.destination);
 
-            if (srcRoot != destRoot) {
+            if (srcParent != destParent) {
                 resultantEdges[resultantEdgesCounter++] = currentEdge;
-                union (subsets, srcRoot, destRoot);
+                union (subsets, srcParent, destParent);
             }
         }
 
@@ -144,25 +144,25 @@ public class KruskalAlgorithm {
                 + minimumCost);
     }
 
-    public int find (Subset[] subsets, int vertex) {
+    public int findParent (Subset[] subsets, int vertex) {
         if (subsets[vertex].parent != vertex) {
-            subsets[vertex].parent = find (subsets, subsets[vertex].parent);
+            subsets[vertex].parent = findParent (subsets, subsets[vertex].parent);
         }
         return subsets[vertex].parent;
     }
 
     public void union (Subset[] subsets, int source, int destination) {
 
-        int srcRoot = find (subsets, source);
-        int destRoot = find (subsets, destination);
+        int srcParent = findParent (subsets, source);
+        int destParent = findParent (subsets, destination);
 
-        if (subsets[srcRoot].rank < subsets[destRoot].rank) {
-            subsets[srcRoot].parent = destRoot;
-        } else if (subsets[srcRoot].rank > subsets[destRoot].rank) {
-            subsets[destRoot].parent = srcRoot;
+        if (subsets[srcParent].rank < subsets[destParent].rank) {
+            subsets[srcParent].parent = destParent;
+        } else if (subsets[srcParent].rank > subsets[destParent].rank) {
+            subsets[destParent].parent = srcParent;
         } else {
-            subsets[destRoot].parent = srcRoot;
-            subsets[srcRoot].rank++;
+            subsets[destParent].parent = srcParent;
+            subsets[srcParent].rank++;
         }
     }
 }

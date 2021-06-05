@@ -1,6 +1,6 @@
 package trees.binarytreecomplete;
 
-public class PrintLevelOfTheNode extends BinaryTreeUtil{
+public class PrintLevelOfTheNode implements BinaryTreeUtil{
 
     int currentLevel;
 

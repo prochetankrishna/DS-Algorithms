@@ -65,7 +65,6 @@ public class LinkedListPalindrome {
             if (temp.data.equals(stack.peek())) {
                 stack.pop();
                 temp = temp.next;
-                continue;
             } else {
                 return false;
             }

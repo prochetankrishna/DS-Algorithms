@@ -197,5 +197,37 @@ public class BSTInsertionAndDeletion {
         bstTree.deleteNode(bstTree.rootNode, 8);
         bstTree.inOrderTraversal(bstTree.rootNode);
         System.out.println("Is Node with Value 8 Exists ? : " + bstTree.searchBST(bstTree.rootNode, 8));
+
+        System.out.println();
+        System.out.println(checkBST(bstTree.rootNode));
+
+    }
+
+    static boolean checkBST(BSTNode root) {
+
+        if (root == null) {
+            return true;
+        }
+
+        boolean isBSTLeft = false;
+        boolean isBSTRight = false;
+        if (root.left != null && root.left.data < root.data) {
+            isBSTLeft = true;
+        } else if (root.left != null && root.left.data == root.data) {
+            isBSTLeft = false;
+        } else if (root.left == null) {
+            isBSTLeft = true;
+        }
+
+        if (root.right != null && root.right.data > root.data) {
+            isBSTRight = true;
+        } else if (root.right != null && root.right.data == root.data) {
+            isBSTRight = false;
+        } else if (root.right == null) {
+            isBSTRight = true;
+        }
+
+        boolean isBSTTillHere = isBSTLeft && isBSTRight;
+        return isBSTTillHere && checkBST(root.left) && checkBST(root.right);
     }
 }

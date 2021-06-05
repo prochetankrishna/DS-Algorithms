@@ -3,7 +3,7 @@ package trees.binarytreecomplete;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MirrorTreeConversion extends BinaryTreeUtil{
+public class MirrorTreeConversion implements BinaryTreeUtil{
 
     public static void main(String[] args) {
 

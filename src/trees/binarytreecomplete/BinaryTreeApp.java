@@ -17,13 +17,13 @@ class TreeNode {
     }
 }
 
-class BinaryTreeUtil {
+interface BinaryTreeUtil {
 
-    public TreeNode getNewNode (int data) {
+    public default TreeNode getNewNode (int data) {
         return new TreeNode(data);
     }
 
-    public void preOrderTraversalRecursion (TreeNode rootNode) {
+    public default void preOrderTraversalRecursion (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -33,7 +33,7 @@ class BinaryTreeUtil {
         preOrderTraversalRecursion(rootNode.right);
     }
 
-    public void preOrderTraversalIterative (TreeNode rootNode) {
+    public default void preOrderTraversalIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -57,7 +57,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public void inOrderTraversalRecursion (TreeNode rootNode) {
+    public default void inOrderTraversalRecursion (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -67,7 +67,7 @@ class BinaryTreeUtil {
         inOrderTraversalRecursion(rootNode.right);
     }
 
-    public void inOrderTraversalIterative (TreeNode rootNode) {
+    public default void inOrderTraversalIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -92,7 +92,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public void postOrderTraversalRecursive (TreeNode rootNode) {
+    public default void postOrderTraversalRecursive (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -102,7 +102,7 @@ class BinaryTreeUtil {
         System.out.print(rootNode.data + " ");
     }
 
-    public void postOrderTraversalIterative (TreeNode rootNode) {
+    public default void postOrderTraversalIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -133,7 +133,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public int findSumOfAllNodes (TreeNode rootNode) {
+    public default int findSumOfAllNodes (TreeNode rootNode) {
 
         if (rootNode == null) {
             return 0;
@@ -142,7 +142,7 @@ class BinaryTreeUtil {
         return rootNode.data + findSumOfAllNodes(rootNode.left) + findSumOfAllNodes(rootNode.right);
     }
 
-    public int findDifferenceAtEvenAndOddLevelRecursive (TreeNode rootNode) {
+    public default int findDifferenceAtEvenAndOddLevelRecursive (TreeNode rootNode) {
 
         if (rootNode == null) {
             return 0;
@@ -152,7 +152,7 @@ class BinaryTreeUtil {
                 findDifferenceAtEvenAndOddLevelRecursive(rootNode.right);
     }
 
-    public int findDifferenceAtEvenAndOddLevelIterative (TreeNode rootNode) {
+    public default int findDifferenceAtEvenAndOddLevelIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
             return 0;
@@ -195,7 +195,7 @@ class BinaryTreeUtil {
         return (oddSum - evenSum);
     }
 
-    public int getTotalNumberOfNodes (TreeNode rootNode) {
+    public default int getTotalNumberOfNodes (TreeNode rootNode) {
 
         if (rootNode == null) {
             return 0;
@@ -204,7 +204,7 @@ class BinaryTreeUtil {
         return 1 + getTotalNumberOfNodes(rootNode.left) + getTotalNumberOfNodes(rootNode.right);
     }
 
-    public int getTotalNumberOfLeafNodes (TreeNode rootNode) {
+    public default int getTotalNumberOfLeafNodes (TreeNode rootNode) {
 
         if (rootNode == null) {
             return 0;
@@ -217,7 +217,7 @@ class BinaryTreeUtil {
         return getTotalNumberOfLeafNodes(rootNode.left) + getTotalNumberOfLeafNodes(rootNode.right);
     }
 
-    public int getHeightOfTree (TreeNode rootNode) {
+    public default int getHeightOfTree (TreeNode rootNode) {
 
         if (rootNode == null) {
             return -1;
@@ -229,7 +229,7 @@ class BinaryTreeUtil {
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
-    public void printElementsAtGivenLevel (TreeNode rootNode, int level) {
+    public default void printElementsAtGivenLevel (TreeNode rootNode, int level) {
 
         if (rootNode == null) {
             return;
@@ -244,7 +244,7 @@ class BinaryTreeUtil {
         printElementsAtGivenLevel(rootNode.right, level - 1);
     }
 
-    public void printLevelOrderTraversalRecursive (TreeNode rootNode) {
+    public default void printLevelOrderTraversalRecursive (TreeNode rootNode) {
 
         int heightOfTree = this.getHeightOfTree(rootNode);
 
@@ -253,7 +253,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public void printLevelOrderTraversalIterative (TreeNode rootNode) {
+    public default void printLevelOrderTraversalIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -284,7 +284,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public void reverseLevelOrderTraversalRecursive (TreeNode rootNode) {
+    public default void reverseLevelOrderTraversalRecursive (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -297,7 +297,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public void reverseLevelOrderTraversalIterative (TreeNode rootNode) {
+    public default void reverseLevelOrderTraversalIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -333,7 +333,7 @@ class BinaryTreeUtil {
         }
     }
 
-    public void printLevelOrderTraversalLineByLine (TreeNode rootNode) {
+    public default void printLevelOrderTraversalLineByLine (TreeNode rootNode) {
 
         if (rootNode == null) {
             return;
@@ -364,44 +364,12 @@ class BinaryTreeUtil {
             System.out.println();
         }
     }
-
-    int maxLevel;
-    public void printLeftViewOfTree (TreeNode rootNode, int currentLevel) {
-
-        if (rootNode == null) {
-            return;
-        }
-
-        if (currentLevel >= maxLevel) {
-            System.out.print(rootNode.data + " ");
-            maxLevel++;
-        }
-
-        printLeftViewOfTree(rootNode.left, currentLevel + 1);
-        printLeftViewOfTree(rootNode.right, currentLevel + 1);
-    }
-
-    public void printRightViewOfTree (TreeNode rootNode, int currentLevel) {
-
-        if (rootNode == null) {
-            return;
-        }
-
-        if (currentLevel >= maxLevel) {
-            System.out.print(rootNode.data + " ");
-            maxLevel++;
-        }
-
-        printLeftViewOfTree(rootNode.right, currentLevel + 1);
-        printLeftViewOfTree(rootNode.left, currentLevel + 1);
-
-    }
 }
-public class BinaryTreeApp {
+public class BinaryTreeApp implements BinaryTreeUtil{
 
     public static void main(String[] args) {
 
-        BinaryTreeUtil binaryTreeUtil = new BinaryTreeUtil();
+        BinaryTreeApp binaryTreeUtil = new BinaryTreeApp();
         TreeNode rootNode = binaryTreeUtil.getNewNode(2);
         rootNode.left = binaryTreeUtil.getNewNode(7);
         rootNode.right = binaryTreeUtil.getNewNode(5);
@@ -471,16 +439,5 @@ public class BinaryTreeApp {
         System.out.println("Level Order Traversal Line by Line : ");
         binaryTreeUtil.printLevelOrderTraversalLineByLine(rootNode);
         System.out.println();
-
-        System.out.print("Left View Of Tree : ");
-        binaryTreeUtil.maxLevel = 0;
-        binaryTreeUtil.printLeftViewOfTree(rootNode, 0);
-        System.out.println();
-
-        System.out.print("Right View Of Tree : ");
-        binaryTreeUtil.maxLevel = 0;
-        binaryTreeUtil.printRightViewOfTree(rootNode, 0);
-        System.out.println();
-
     }
 }
