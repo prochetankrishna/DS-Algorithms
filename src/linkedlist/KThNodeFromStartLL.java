@@ -5,25 +5,25 @@ public class KThNodeFromStartLL extends LinkedListUtil{
     public static void main(String[] args) {
 
         KThNodeFromStartLL linkedListUtil = new KThNodeFromStartLL();
-        Node rootNode = null;
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 4);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 5);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        Node kThNode = linkedListUtil.findKThNodeFromStart (rootNode, 5);
+        ListNode headNode = null;
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 4);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 5);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        ListNode kThNode = linkedListUtil.findKThNodeFromStart (headNode, 5);
 
         if (kThNode == null) {
             System.out.println("Not Found");
         } else {
-            System.out.println("KTH NODE : [" + kThNode.data + "]");
+            System.out.println("KTH ListNode : [" + kThNode.data + "]");
         }
     }
 
-    public Node findKThNodeFromStart(Node rootNode, int K) {
+    public ListNode findKThNodeFromStart(ListNode headNode, int K) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return null;
         }
 
@@ -32,7 +32,7 @@ public class KThNodeFromStartLL extends LinkedListUtil{
             return null;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         int i = 1;
 
         while (i < K) {

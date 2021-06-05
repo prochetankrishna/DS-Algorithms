@@ -5,7 +5,7 @@ public class DeleteNNodesAfterMNodesLL extends LinkedListUtil{
     public static void main(String[] args) {
 
         DeleteNNodesAfterMNodesLL linkedListUtil = new DeleteNNodesAfterMNodesLL();
-        Node rootNode = null;
+        ListNode rootNode = null;
         rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
         rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
         rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
@@ -17,7 +17,7 @@ public class DeleteNNodesAfterMNodesLL extends LinkedListUtil{
         linkedListUtil.printLinkedListRecursive(rootNode);
     }
 
-    private Node deleteNNodesAfterMNodes(Node rootNode, int M, int N) {
+    private ListNode deleteNNodesAfterMNodes(ListNode rootNode, int M, int N) {
 
         if (rootNode == null) {
             return null;
@@ -32,8 +32,8 @@ public class DeleteNNodesAfterMNodesLL extends LinkedListUtil{
             return rootNode;
         }
 
-        Node tempNodeOne = rootNode;
-        Node tempNodeTwo = rootNode;
+        ListNode tempNodeOne = rootNode;
+        ListNode tempNodeTwo = rootNode;
 
         int i = 0;
         //Traverse M Nodes

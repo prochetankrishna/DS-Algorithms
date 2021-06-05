@@ -5,7 +5,7 @@ public class LengthOfTheLoop extends LinkedListUtil{
     public static void main(String[] args) {
 
         LengthOfTheLoop linkedListUtil = new LengthOfTheLoop();
-        Node headNode = null;
+        ListNode headNode = null;
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
@@ -17,15 +17,15 @@ public class LengthOfTheLoop extends LinkedListUtil{
         System.out.println("Length of Loop : " + linkedListUtil.lengthOfLoopInLinkedList(headNode));
     }
 
-    public int lengthOfLoopInLinkedList (Node headNode) {
+    public int lengthOfLoopInLinkedList (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return 0;
         }
 
         boolean isLoopExists = false;
-        Node fastPtr = headNode;
-        Node slowPtr = headNode;
+        ListNode fastPtr = headNode;
+        ListNode slowPtr = headNode;
 
         while (fastPtr != null && fastPtr.next != null) {
             fastPtr = fastPtr.next.next;

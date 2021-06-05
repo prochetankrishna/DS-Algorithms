@@ -5,37 +5,37 @@ public class UnionOfTwoLinkedList extends LinkedListUtil{
     public static void main(String[] args) {
 
         UnionOfTwoLinkedList linkedListUtil = new UnionOfTwoLinkedList();
-        Node rootNodeOne = null;
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 37);
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 8);
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 13);
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 18);
+        ListNode headNodeOne = null;
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 37);
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 8);
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 13);
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 18);
 
-        Node rootNodeTwo = null;
-        rootNodeTwo = linkedListUtil.insertAtFrontBegin(rootNodeTwo, 18);
-        rootNodeTwo = linkedListUtil.insertAtFrontBegin(rootNodeTwo, 14);
-        rootNodeTwo = linkedListUtil.insertAtFrontBegin(rootNodeTwo, 8);
+        ListNode headNodeTwo = null;
+        headNodeTwo = linkedListUtil.insertAtFrontBegin(headNodeTwo, 18);
+        headNodeTwo = linkedListUtil.insertAtFrontBegin(headNodeTwo, 14);
+        headNodeTwo = linkedListUtil.insertAtFrontBegin(headNodeTwo, 8);
 
-        linkedListUtil.printLinkedListIterative(rootNodeOne);
-        linkedListUtil.printLinkedListIterative(rootNodeTwo);
+        linkedListUtil.printLinkedListIterative(headNodeOne);
+        linkedListUtil.printLinkedListIterative(headNodeTwo);
 
-        Node rootNodeUnion = linkedListUtil.findUnionOfLinkedList (rootNodeOne, rootNodeTwo);
+        ListNode headNodeUnion = linkedListUtil.findUnionOfLinkedList (headNodeOne, headNodeTwo);
         System.out.print("Union of Linked List : ");
-        linkedListUtil.printLinkedListIterative(rootNodeUnion);
+        linkedListUtil.printLinkedListIterative(headNodeUnion);
     }
 
-    public Node findUnionOfLinkedList(Node rootNodeOne, Node rootNodeTwo) {
+    public ListNode findUnionOfLinkedList(ListNode headNodeOne, ListNode headNodeTwo) {
 
-        Node sortedLLOne = this.sortLinkedList(rootNodeOne);
-        Node sortedLLTwo = this.sortLinkedList(rootNodeTwo);
+        ListNode sortedLLOne = this.sortLinkedList(headNodeOne);
+        ListNode sortedLLTwo = this.sortLinkedList(headNodeTwo);
 
         return mergeLinkedListWithUnion (sortedLLOne, sortedLLTwo);
     }
 
-    public Node mergeLinkedListWithUnion(Node sortedLLOne, Node sortedLLTwo) {
+    public ListNode mergeLinkedListWithUnion(ListNode sortedLLOne, ListNode sortedLLTwo) {
 
-        Node tempNode = new Node();
-        Node finalList = tempNode;
+        ListNode tempNode = new ListNode();
+        ListNode finalList = tempNode;
 
         while (sortedLLOne != null && sortedLLTwo != null) {
 

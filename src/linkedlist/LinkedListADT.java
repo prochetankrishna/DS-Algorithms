@@ -2,13 +2,13 @@ package linkedlist;
 
 import java.sql.SQLOutput;
 
-class Node {
+class ListNode {
     int data;
-    Node next;
+    ListNode next;
 
-    public Node() {};
+    public ListNode() {};
 
-    public Node(int data) {
+    public ListNode(int data) {
         this.data = data;
         this.next = null;
     }
@@ -16,94 +16,94 @@ class Node {
 
 class LinkedListUtil {
 
-    private Node getNewNode (int data) {
-        Node newNode = new Node (data);
+    private ListNode getNewNode (int data) {
+        ListNode newNode = new ListNode (data);
         return newNode;
     }
 
-    public Node insertAtFrontBegin (Node rootNode, int data) {
+    public ListNode insertAtFrontBegin (ListNode headNode, int data) {
 
-        Node newNode = getNewNode(data);
-        newNode.next = rootNode;
+        ListNode newNode = getNewNode(data);
+        newNode.next = headNode;
         return newNode;
     }
 
-    public Node insertAtEndIterative (Node rootNode, int data) {
+    public ListNode insertAtEndIterative (ListNode headNode, int data) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return getNewNode(data);
         } else {
-            Node tempNode = rootNode;
+            ListNode tempNode = headNode;
             while (tempNode.next != null) {
                 tempNode = tempNode.next;
             }
             tempNode.next = getNewNode(data);
         }
-        return rootNode;
+        return headNode;
     }
 
-    public Node insertAtEndRecursive (Node rootNode, int data) {
+    public ListNode insertAtEndRecursive (ListNode headNode, int data) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return getNewNode(data);
         } else {
-            rootNode.next = insertAtEndRecursive(rootNode.next, data);
+            headNode.next = insertAtEndRecursive(headNode.next, data);
         }
-        return rootNode;
+        return headNode;
     }
 
-    public void printLinkedListRecursive (Node rootNode) {
+    public void printLinkedListRecursive (ListNode headNode) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             System.out.println();
             return;
         }
-        System.out.print(rootNode.data + " ");
-        printLinkedListRecursive(rootNode.next);
+        System.out.print(headNode.data + " ");
+        printLinkedListRecursive(headNode.next);
     }
 
-    public Node insertNodeAtPositionRecursive (Node rootNode, int position, int data) {
+    public ListNode insertNodeAtPositionRecursive (ListNode headNode, int position, int data) {
 
         if (position < 1) {
             System.out.println("Position cannot be less than 1");
-            return rootNode;
+            return headNode;
         }
 
-        if (rootNode == null && position > 1) {
+        if (headNode == null && position > 1) {
             System.out.println("Position is greater than the length of the list.");
-            return rootNode;
+            return headNode;
         }
 
-        if (rootNode == null && position == 1) {
+        if (headNode == null && position == 1) {
             return getNewNode(data);
         }
 
         if (position == 1) {
-            Node newNode = getNewNode(data);
-            newNode.next = rootNode;
+            ListNode newNode = getNewNode(data);
+            newNode.next = headNode;
             return newNode;
         }
 
-        rootNode.next = insertNodeAtPositionRecursive(rootNode.next, position - 1, data);
-        return rootNode;
+        headNode.next = insertNodeAtPositionRecursive(headNode.next, position - 1, data);
+        return headNode;
     }
 
-    public Node insertNodeAtPositionIterative (Node rootNode, int position, int data) {
+    public ListNode insertNodeAtPositionIterative (ListNode headNode, int position, int data) {
 
         if (position < 1) {
             System.out.println("Position cannot be less than 1");
-            return rootNode;
+            return headNode;
         }
 
         if (position == 1) {
-            Node newNode = getNewNode(data);
-            newNode.next = rootNode;
+            ListNode newNode = getNewNode(data);
+            newNode.next = headNode;
             return newNode;
         } else {
-            Node tempNode = rootNode;
+            ListNode tempNode = headNode;
             while (position-- != 0 && tempNode != null) {
                 if (position == 1) {
-                    Node newNode = getNewNode(data);
+                    ListNode newNode = getNewNode(data);
                     newNode.next = tempNode.next;
                     tempNode.next = newNode;
                     break;
@@ -114,95 +114,95 @@ class LinkedListUtil {
                 System.out.println("Position is greater than the length of list");
             }
         }
-        return rootNode;
+        return headNode;
     }
 
-    public Node deleteLastNodeIterative (Node rootNode) {
+    public ListNode deleteLastNodeIterative (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
+        if (headNode == null || headNode.next == null) {
             return null;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         while (tempNode.next.next != null) {
             tempNode = tempNode.next;
         }
         tempNode.next = null;
-        return rootNode;
+        return headNode;
     }
 
-    public Node deleteFirstNode (Node rootNode) {
+    public ListNode deleteFirstNode (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
+        if (headNode == null || headNode.next == null) {
             return null;
         }
-        return rootNode.next;
+        return headNode.next;
     }
 
-    public Node deleteNodeAtPositionRecursive (Node rootNode, int position) {
+    public ListNode deleteNodeAtPositionRecursive (ListNode headNode, int position) {
 
         if (position < 0) {
             System.out.println("Position can't be negative");
-            return rootNode;
+            return headNode;
         }
 
-        if (rootNode == null && position > 1) {
+        if (headNode == null && position > 1) {
             System.out.println("Position is greater than the length of the List");
-            return rootNode;
+            return headNode;
         }
 
         if (position == 1) {
-            return rootNode.next;
+            return headNode.next;
         }
 
-        rootNode.next = deleteNodeAtPositionRecursive(rootNode.next, position -1);
-        return rootNode;
+        headNode.next = deleteNodeAtPositionRecursive(headNode.next, position -1);
+        return headNode;
     }
 
-    public Node deleteNodeAtPositionIterative (Node rootNode, int position) {
+    public ListNode deleteNodeAtPositionIterative (ListNode headNode, int position) {
 
         if (position < 0) {
             System.out.println("Position can't be negative");
-            return rootNode;
+            return headNode;
         }
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return null;
         }
 
         if (position == 1) {
-            return rootNode.next;
+            return headNode.next;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         while (position-- != 2) {
             tempNode = tempNode.next;
         }
 
         if (tempNode == null || tempNode.next == null) {
             System.out.println("Position is greater than the length of the list");
-            return rootNode;
+            return headNode;
         }
 
-        Node nextNode = tempNode.next.next;
+        ListNode nextNode = tempNode.next.next;
         tempNode.next = nextNode;
-        return rootNode;
+        return headNode;
     }
 
-    public int lengthOfLinkedListRecursive (Node rootNode) {
+    public int lengthOfLinkedListRecursive (ListNode headNode) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return 0;
         }
-        return 1 + lengthOfLinkedListRecursive(rootNode.next);
+        return 1 + lengthOfLinkedListRecursive(headNode.next);
     }
 
-    public int lengthOfLinkedListIterative (Node rootNode) {
+    public int lengthOfLinkedListIterative (ListNode headNode) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return 0;
         }
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         int count = 0;
         while (tempNode != null) {
             count++;
@@ -211,29 +211,29 @@ class LinkedListUtil {
         return count;
     }
 
-    public boolean searchInLinkedListRecursive (Node rootNode, int key) {
+    public boolean searchInLinkedListRecursive (ListNode headNode, int key) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return false;
         }
 
-        if (rootNode.data == key) {
+        if (headNode.data == key) {
             return true;
         }
-        return searchInLinkedListRecursive(rootNode.next, key);
+        return searchInLinkedListRecursive(headNode.next, key);
     }
 
-    public boolean searchInLinkedListIterative (Node rootNode, int key) {
+    public boolean searchInLinkedListIterative (ListNode headNode, int key) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return false;
         }
 
-        if (rootNode.data == key) {
+        if (headNode.data == key) {
             return true;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         while (tempNode != null) {
             if (tempNode.data == key) {
                 return true;
@@ -243,28 +243,28 @@ class LinkedListUtil {
         return false;
     }
 
-    public Node reverseLinkedListRecursive (Node rootNode) {
+    public ListNode reverseLinkedListRecursive (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
-            return rootNode;
+        if (headNode == null || headNode.next == null) {
+            return headNode;
         }
 
-        Node tempNode = this.reverseLinkedListRecursive(rootNode.next);
-        rootNode.next.next = rootNode;
-        rootNode.next = null;
+        ListNode tempNode = this.reverseLinkedListRecursive(headNode.next);
+        headNode.next.next = headNode;
+        headNode.next = null;
 
         return tempNode;
     }
 
-    public Node reverseLinkedListIterative (Node rootNode) {
+    public ListNode reverseLinkedListIterative (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
-            return rootNode;
+        if (headNode == null || headNode.next == null) {
+            return headNode;
         }
 
-        Node prevNode = null;
-        Node currentNode = rootNode;
-        Node nextNode = null;
+        ListNode prevNode = null;
+        ListNode currentNode = headNode;
+        ListNode nextNode = null;
 
         while (currentNode != null) {
             nextNode = currentNode.next;
@@ -275,14 +275,14 @@ class LinkedListUtil {
         return prevNode;
     }
 
-    public Node getMiddleNodeOfLinkedList (Node rootNode) {
+    public ListNode getMiddleNodeOfLinkedList (ListNode headNode) {
 
-        if (rootNode == null) {
-            return rootNode;
+        if (headNode == null) {
+            return headNode;
         }
 
-        Node fastPtr = rootNode.next;
-        Node slowPtr = rootNode;
+        ListNode fastPtr = headNode.next;
+        ListNode slowPtr = headNode;
 
         while (fastPtr != null && fastPtr.next != null) {
 
@@ -292,23 +292,23 @@ class LinkedListUtil {
         return slowPtr;
     }
 
-    public Node sortLinkedList (Node rootNode) {
+    public ListNode sortLinkedList (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
-            return rootNode;
+        if (headNode == null || headNode.next == null) {
+            return headNode;
         }
 
-        Node middleNode = this.getMiddleNodeOfLinkedList(rootNode);
-        Node secondHalf = middleNode.next;
+        ListNode middleNode = this.getMiddleNodeOfLinkedList(headNode);
+        ListNode secondHalf = middleNode.next;
         middleNode.next = null;
 
-        return performMergeAndSort (sortLinkedList(rootNode), sortLinkedList(secondHalf));
+        return performMergeAndSort (sortLinkedList(headNode), sortLinkedList(secondHalf));
     }
 
-    public Node performMergeAndSort (Node firstHalf, Node secondHalf) {
+    public ListNode performMergeAndSort (ListNode firstHalf, ListNode secondHalf) {
 
-        Node tempNode = new Node();
-        Node result = tempNode;
+        ListNode tempNode = new ListNode();
+        ListNode result = tempNode;
 
         while (firstHalf != null && secondHalf != null) {
 
@@ -337,18 +337,38 @@ class LinkedListUtil {
         return result.next;
     }
 
-    public void printLinkedListIterative (Node rootNode) {
+    public void printLinkedListIterative (ListNode headNode) {
 
-        if (rootNode == null) {
+        if (headNode == null) {
             return;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         while (tempNode != null) {
             System.out.print(tempNode.data + " ");
             tempNode = tempNode.next;
         }
         System.out.println();
+    }
+    
+    public ListNode deleteMiddleOfLL (ListNode headNode) {
+
+        if (headNode == null || headNode.next == null) {
+            return null;
+        }
+
+        ListNode slowPtr = headNode;
+        ListNode fastPtr = headNode;
+        ListNode prevSlowPtr = headNode;
+
+        while (fastPtr != null && fastPtr.next != null) {
+            prevSlowPtr = slowPtr;
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+        }
+
+        prevSlowPtr.next = slowPtr.next;
+        return headNode;
     }
 }
 
@@ -356,47 +376,47 @@ public class LinkedListADT {
 
     public static void main(String[] args) {
 
-        Node rootNode = null;
+        ListNode headNode = null;
         LinkedListUtil linkedListUtil = new LinkedListUtil();
-        rootNode = linkedListUtil.insertAtEndIterative(rootNode, 12);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 99);
-        rootNode = linkedListUtil.insertAtEndIterative(rootNode, 37);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.insertAtEndIterative(rootNode, 48);
-        linkedListUtil.printLinkedListIterative(rootNode);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 33);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.insertNodeAtPositionRecursive(rootNode, 1, 45);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.insertNodeAtPositionRecursive(rootNode, 0, 45);
-        rootNode = linkedListUtil.insertNodeAtPositionRecursive(rootNode, 10, 45);
-        rootNode = linkedListUtil.insertNodeAtPositionRecursive(rootNode, 3, 101);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.insertNodeAtPositionIterative(rootNode, 10, 56);
-        rootNode = linkedListUtil.insertNodeAtPositionIterative(rootNode, -3, 56);
-        rootNode = linkedListUtil.insertNodeAtPositionIterative(rootNode, 6, 56);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.deleteLastNodeIterative(rootNode);
-        linkedListUtil.printLinkedListIterative(rootNode);
-        rootNode = linkedListUtil.deleteFirstNode(rootNode);
-        linkedListUtil.printLinkedListIterative(rootNode);
-        rootNode = linkedListUtil.deleteNodeAtPositionIterative(rootNode, 6);
-        linkedListUtil.printLinkedListIterative(rootNode);
-        System.out.println(linkedListUtil.lengthOfLinkedListRecursive(rootNode));
-        System.out.println(linkedListUtil.lengthOfLinkedListIterative(rootNode));
-        System.out.println(linkedListUtil.searchInLinkedListIterative(rootNode, 25));
-        System.out.println(linkedListUtil.searchInLinkedListRecursive(rootNode, 25));
-        System.out.println(linkedListUtil.searchInLinkedListIterative(rootNode, 56));
-        System.out.println(linkedListUtil.searchInLinkedListRecursive(rootNode, 56));
-        linkedListUtil.printLinkedListIterative(rootNode);
-        rootNode = linkedListUtil.reverseLinkedListRecursive(rootNode);
-        linkedListUtil.printLinkedListIterative(rootNode);
-        rootNode = linkedListUtil.reverseLinkedListIterative(rootNode);
-        linkedListUtil.printLinkedListIterative(rootNode);
-        System.out.println("Value of Middle Node is : " + linkedListUtil.getMiddleNodeOfLinkedList(rootNode).data);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode,12);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.sortLinkedList(rootNode);
-        linkedListUtil.printLinkedListRecursive(rootNode);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 12);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 99);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 37);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 48);
+        linkedListUtil.printLinkedListIterative(headNode);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 33);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.insertNodeAtPositionRecursive(headNode, 1, 45);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.insertNodeAtPositionRecursive(headNode, 0, 45);
+        headNode = linkedListUtil.insertNodeAtPositionRecursive(headNode, 10, 45);
+        headNode = linkedListUtil.insertNodeAtPositionRecursive(headNode, 3, 101);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.insertNodeAtPositionIterative(headNode, 10, 56);
+        headNode = linkedListUtil.insertNodeAtPositionIterative(headNode, -3, 56);
+        headNode = linkedListUtil.insertNodeAtPositionIterative(headNode, 6, 56);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.deleteLastNodeIterative(headNode);
+        linkedListUtil.printLinkedListIterative(headNode);
+        headNode = linkedListUtil.deleteFirstNode(headNode);
+        linkedListUtil.printLinkedListIterative(headNode);
+        headNode = linkedListUtil.deleteNodeAtPositionIterative(headNode, 6);
+        linkedListUtil.printLinkedListIterative(headNode);
+        System.out.println(linkedListUtil.lengthOfLinkedListRecursive(headNode));
+        System.out.println(linkedListUtil.lengthOfLinkedListIterative(headNode));
+        System.out.println(linkedListUtil.searchInLinkedListIterative(headNode, 25));
+        System.out.println(linkedListUtil.searchInLinkedListRecursive(headNode, 25));
+        System.out.println(linkedListUtil.searchInLinkedListIterative(headNode, 56));
+        System.out.println(linkedListUtil.searchInLinkedListRecursive(headNode, 56));
+        linkedListUtil.printLinkedListIterative(headNode);
+        headNode = linkedListUtil.reverseLinkedListRecursive(headNode);
+        linkedListUtil.printLinkedListIterative(headNode);
+        headNode = linkedListUtil.reverseLinkedListIterative(headNode);
+        linkedListUtil.printLinkedListIterative(headNode);
+        System.out.println("Value of Middle ListNode is : " + linkedListUtil.getMiddleNodeOfLinkedList(headNode).data);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode,12);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.deleteMiddleOfLL(headNode);
+        linkedListUtil.printLinkedListRecursive(headNode);
     }
 }

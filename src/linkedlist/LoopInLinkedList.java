@@ -5,7 +5,7 @@ public class LoopInLinkedList extends LinkedListUtil{
     public static void main(String[] args) {
 
         LoopInLinkedList linkedListUtil = new LoopInLinkedList();
-        Node headNode = null;
+        ListNode headNode = null;
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
@@ -18,14 +18,14 @@ public class LoopInLinkedList extends LinkedListUtil{
         System.out.println("Loop Exists ? : " + linkedListUtil.isLoopExistsInLL(headNode));
     }
 
-    public boolean isLoopExistsInLL (Node headNode) {
+    public boolean isLoopExistsInLL (ListNode headNode) {
 
         if (headNode == null) {
             return false;
         }
 
-        Node fastPtr = headNode;
-        Node slowPtr = headNode;
+        ListNode fastPtr = headNode;
+        ListNode slowPtr = headNode;
 
         while (fastPtr != null && fastPtr.next != null) {
 

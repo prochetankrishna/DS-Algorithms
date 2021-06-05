@@ -1,6 +1,5 @@
 package linkedlist;
 
-import java.sql.SQLOutput;
 
 public class LowestCommonNodeInTwoLinkedList extends IntersectionOfTwoLinkedList{
 
@@ -8,35 +7,35 @@ public class LowestCommonNodeInTwoLinkedList extends IntersectionOfTwoLinkedList
 
         LowestCommonNodeInTwoLinkedList linkedListUtil = new LowestCommonNodeInTwoLinkedList();
 
-        Node rootNodeOne = null;
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 37);
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 8);
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 13);
-        rootNodeOne = linkedListUtil.insertAtFrontBegin(rootNodeOne, 18);
+        ListNode headNodeOne = null;
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 37);
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 8);
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 13);
+        headNodeOne = linkedListUtil.insertAtFrontBegin(headNodeOne, 18);
 
-        Node rootNodeTwo = null;
-        rootNodeTwo = linkedListUtil.insertAtFrontBegin(rootNodeTwo, 18);
-        rootNodeTwo = linkedListUtil.insertAtFrontBegin(rootNodeTwo, 14);
-        rootNodeTwo = linkedListUtil.insertAtFrontBegin(rootNodeTwo, 8);
+        ListNode headNodeTwo = null;
+        headNodeTwo = linkedListUtil.insertAtFrontBegin(headNodeTwo, 18);
+        headNodeTwo = linkedListUtil.insertAtFrontBegin(headNodeTwo, 14);
+        headNodeTwo = linkedListUtil.insertAtFrontBegin(headNodeTwo, 8);
 
         System.out.print("Linked List 1 : ");
-        linkedListUtil.printLinkedListIterative(rootNodeOne);
+        linkedListUtil.printLinkedListIterative(headNodeOne);
 
         System.out.print("Linked List 2 : ");
-        linkedListUtil.printLinkedListIterative(rootNodeTwo);
+        linkedListUtil.printLinkedListIterative(headNodeTwo);
 
-        Node lowestCommonNode = linkedListUtil.findLowestCommonInBothLinkedList(rootNodeOne, rootNodeTwo);
+        ListNode lowestCommonNode = linkedListUtil.findLowestCommonInBothLinkedList(headNodeOne, headNodeTwo);
         if (lowestCommonNode != null) {
-            System.out.println("Lowest Common Node : " + lowestCommonNode.data);
+            System.out.println("Lowest Common ListNode : " + lowestCommonNode.data);
         } else {
-            System.out.println("No Common Node Exists !");
+            System.out.println("No Common ListNode Exists !");
         }
 
     }
 
-    public Node findLowestCommonInBothLinkedList (Node rootNodeOne, Node rootNodeTwo) {
+    public ListNode findLowestCommonInBothLinkedList (ListNode headNodeOne, ListNode headNodeTwo) {
 
-        Node intersectionOfTwoLinkedList = this.findIntersectionOfTwoLinkedList(rootNodeOne, rootNodeTwo);
+        ListNode intersectionOfTwoLinkedList = this.findIntersectionOfTwoLinkedList(headNodeOne, headNodeTwo);
         System.out.print("Intersection of Two Linked List : " );
         this.printLinkedListIterative(intersectionOfTwoLinkedList);
 

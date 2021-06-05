@@ -8,31 +8,31 @@ public class RemoveDuplicatesFromUnSortedLL extends LinkedListUtil{
     public static void main(String[] args) {
 
         RemoveDuplicatesFromUnSortedLL linkedListUtil = new RemoveDuplicatesFromUnSortedLL();
-        Node rootNode = null;
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 4);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 4);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.removeDuplicatesUsingHashMap(rootNode);
-        linkedListUtil.printLinkedListRecursive(rootNode);
+        ListNode headNode = null;
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 4);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 4);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.removeDuplicatesUsingHashMap(headNode);
+        linkedListUtil.printLinkedListRecursive(headNode);
     }
 
-    public Node removeDuplicatesUsingHashMap (Node rootNode) {
+    public ListNode removeDuplicatesUsingHashMap (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
+        if (headNode == null || headNode.next == null) {
             return null;
         }
 
         Map<Integer, Integer> traversalMap = new HashMap<>();
 
-        Node tempNode = rootNode;
-        Node prevNode = null;
+        ListNode tempNode = headNode;
+        ListNode prevNode = null;
 
         while (tempNode != null) {
 
@@ -45,6 +45,6 @@ public class RemoveDuplicatesFromUnSortedLL extends LinkedListUtil{
                 tempNode = tempNode.next;
             }
         }
-        return rootNode;
+        return headNode;
     }
 }

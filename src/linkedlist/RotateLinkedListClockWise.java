@@ -5,32 +5,32 @@ public class RotateLinkedListClockWise extends LinkedListUtil {
     public static void main(String[] args) {
 
         RotateLinkedListClockWise linkedListUtil = new RotateLinkedListClockWise();
-        Node rootNode = null;
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 4);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 5);
+        ListNode headNode = null;
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 4);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 5);
 
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.rotateLinkedListClockWise(rootNode, 1);
-        linkedListUtil.printLinkedListIterative(rootNode);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.rotateLinkedListClockWise(headNode, 1);
+        linkedListUtil.printLinkedListIterative(headNode);
     }
 
-    public Node rotateLinkedListClockWise (Node rootNode, int numberOfRotations) {
+    public ListNode rotateLinkedListClockWise (ListNode headNode, int numberOfRotations) {
 
         if (numberOfRotations <= 0) {
-            return rootNode;
+            return headNode;
         }
 
-        int sizeOfLinkedList = this.lengthOfLinkedListIterative(rootNode);
+        int sizeOfLinkedList = this.lengthOfLinkedListIterative(headNode);
         numberOfRotations = numberOfRotations % sizeOfLinkedList;
 
         if (numberOfRotations == 0) {
-            return rootNode;
+            return headNode;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         int i = 1;
 
         while (i < sizeOfLinkedList - numberOfRotations) {
@@ -38,15 +38,15 @@ public class RotateLinkedListClockWise extends LinkedListUtil {
             i++;
         }
 
-        Node nextNode = tempNode.next;
-        Node newRootNode = nextNode;
+        ListNode nextNode = tempNode.next;
+        ListNode newRootNode = nextNode;
         tempNode.next = null;
 
         while (nextNode.next != null) {
             nextNode = nextNode.next;
         }
 
-        nextNode.next = rootNode;
+        nextNode.next = headNode;
         return newRootNode;
     }
 }

@@ -5,45 +5,45 @@ public class RotateLinkedListAntiClockWise extends LinkedListUtil{
     public static void main(String[] args) {
 
         RotateLinkedListAntiClockWise linkedListUtil = new RotateLinkedListAntiClockWise();
-        Node rootNode = null;
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 1);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 2);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 3);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 4);
-        rootNode = linkedListUtil.insertAtEndRecursive(rootNode, 5);
-        linkedListUtil.printLinkedListRecursive(rootNode);
-        rootNode = linkedListUtil.rotateLinkedListAntiClockWise(rootNode, 1);
-        linkedListUtil.printLinkedListIterative(rootNode);
+        ListNode headNode = null;
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 1);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 2);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 3);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 4);
+        headNode = linkedListUtil.insertAtEndRecursive(headNode, 5);
+        linkedListUtil.printLinkedListRecursive(headNode);
+        headNode = linkedListUtil.rotateLinkedListAntiClockWise(headNode, 1);
+        linkedListUtil.printLinkedListIterative(headNode);
     }
 
-    private Node rotateLinkedListAntiClockWise(Node rootNode, int numberOfRotations) {
+    private ListNode rotateLinkedListAntiClockWise(ListNode headNode, int numberOfRotations) {
 
-        if (rootNode == null || numberOfRotations < 0) {
-            return rootNode;
+        if (headNode == null || numberOfRotations < 0) {
+            return headNode;
         }
 
-        int sizeOfLinkedList = this.lengthOfLinkedListIterative(rootNode);
+        int sizeOfLinkedList = this.lengthOfLinkedListIterative(headNode);
         numberOfRotations = numberOfRotations % sizeOfLinkedList;
         if (numberOfRotations == 0) {
-            return rootNode;
+            return headNode;
         }
 
         int i = 1;
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
         while (i < numberOfRotations) {
             tempNode = tempNode.next;
             i++;
         }
 
-        Node newRootNode = tempNode.next;
+        ListNode newRootNode = tempNode.next;
         tempNode.next = null;
 
-        Node nextNode = newRootNode;
+        ListNode nextNode = newRootNode;
         while (nextNode.next != null) {
             nextNode = nextNode.next;
         }
 
-        nextNode.next = rootNode;
+        nextNode.next = headNode;
         return newRootNode;
     }
 }

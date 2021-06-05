@@ -6,33 +6,33 @@ public class RemoveDuplicatesFromSortedLinkedList extends LinkedListUtil{
 
         RemoveDuplicatesFromSortedLinkedList linkedListUtil = new RemoveDuplicatesFromSortedLinkedList();
 
-        Node rootNode = null;
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 45);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 45);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 37);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 37);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 34);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 13);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 8);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 8);
-        rootNode = linkedListUtil.insertAtFrontBegin(rootNode, 8);
+        ListNode headNode = null;
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 45);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 45);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 37);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 37);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 34);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 13);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 8);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 8);
+        headNode = linkedListUtil.insertAtFrontBegin(headNode, 8);
 
         System.out.print("Linked List : ");
-        linkedListUtil.printLinkedListIterative(rootNode);
+        linkedListUtil.printLinkedListIterative(headNode);
 
 
-        Node uniqueLinkedList = linkedListUtil.removeDuplicatesFromSortedLinkedListIterative(rootNode);
+        ListNode uniqueLinkedList = linkedListUtil.removeDuplicatesFromSortedLinkedListIterative(headNode);
         System.out.print("Unique Linked List : ");
         linkedListUtil.printLinkedListIterative(uniqueLinkedList);
     }
 
-    public Node removeDuplicatesFromSortedLinkedListIterative (Node rootNode) {
+    public ListNode removeDuplicatesFromSortedLinkedListIterative (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
-            return rootNode;
+        if (headNode == null || headNode.next == null) {
+            return headNode;
         }
 
-        Node tempNode = rootNode;
+        ListNode tempNode = headNode;
 
         while (tempNode != null && tempNode.next != null) {
             if (tempNode.data == tempNode.next.data) {
@@ -42,21 +42,21 @@ public class RemoveDuplicatesFromSortedLinkedList extends LinkedListUtil{
             }
 
         }
-        return rootNode;
+        return headNode;
     }
 
-    public Node removeDuplicatesFromSortedLinkedListRecursive (Node rootNode) {
+    public ListNode removeDuplicatesFromSortedLinkedListRecursive (ListNode headNode) {
 
-        if (rootNode == null || rootNode.next == null) {
-            return rootNode;
+        if (headNode == null || headNode.next == null) {
+            return headNode;
         }
 
-        if (rootNode.data == rootNode.next.data) {
-            rootNode.next = rootNode.next.next;
-            removeDuplicatesFromSortedLinkedListRecursive(rootNode);
+        if (headNode.data == headNode.next.data) {
+            headNode.next = headNode.next.next;
+            removeDuplicatesFromSortedLinkedListRecursive(headNode);
         } else {
-            removeDuplicatesFromSortedLinkedListRecursive(rootNode.next);
+            removeDuplicatesFromSortedLinkedListRecursive(headNode.next);
         }
-        return rootNode;
+        return headNode;
     }
 }
