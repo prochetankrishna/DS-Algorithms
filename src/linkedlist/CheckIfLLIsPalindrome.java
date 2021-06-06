@@ -2,7 +2,7 @@ package linkedlist;
 
 import java.util.Stack;
 
-public class CheckIfLLIsPalindrome extends LinkedListUtil{
+public class CheckIfLLIsPalindrome implements LinkedListUtil{
 
     public static void main(String[] args) {
 

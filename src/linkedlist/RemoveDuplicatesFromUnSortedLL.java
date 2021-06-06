@@ -3,7 +3,7 @@ package linkedlist;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RemoveDuplicatesFromUnSortedLL extends LinkedListUtil{
+public class RemoveDuplicatesFromUnSortedLL implements LinkedListUtil{
 
     public static void main(String[] args) {
 

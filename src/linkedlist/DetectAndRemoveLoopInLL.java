@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class DetectAndRemoveLoopInLL extends LinkedListUtil{
+public class DetectAndRemoveLoopInLL implements LinkedListUtil{
 
     public static void main(String[] args) {
 

@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class RemoveDuplicatesFromSortedLinkedList extends LinkedListUtil{
+public class RemoveDuplicatesFromSortedLinkedList implements LinkedListUtil{
 
     public static void main(String[] args) {
 

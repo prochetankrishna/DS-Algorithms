@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class IntersectionOfTwoLinkedList extends LinkedListUtil{
+public class IntersectionOfTwoLinkedList implements LinkedListUtil{
 
     public static void main(String[] args) {
 

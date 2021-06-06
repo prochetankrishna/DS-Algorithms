@@ -1,7 +1,5 @@
 package linkedlist;
 
-import java.sql.SQLOutput;
-
 class ListNode {
     int data;
     ListNode next;
@@ -14,21 +12,21 @@ class ListNode {
     }
 }
 
-class LinkedListUtil {
+interface LinkedListUtil {
 
     private ListNode getNewNode (int data) {
         ListNode newNode = new ListNode (data);
         return newNode;
     }
 
-    public ListNode insertAtFrontBegin (ListNode headNode, int data) {
+    public default ListNode insertAtFrontBegin (ListNode headNode, int data) {
 
         ListNode newNode = getNewNode(data);
         newNode.next = headNode;
         return newNode;
     }
 
-    public ListNode insertAtEndIterative (ListNode headNode, int data) {
+    public default ListNode insertAtEndIterative (ListNode headNode, int data) {
 
         if (headNode == null) {
             return getNewNode(data);
@@ -42,7 +40,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public ListNode insertAtEndRecursive (ListNode headNode, int data) {
+    public default ListNode insertAtEndRecursive (ListNode headNode, int data) {
 
         if (headNode == null) {
             return getNewNode(data);
@@ -52,7 +50,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public void printLinkedListRecursive (ListNode headNode) {
+    public default void printLinkedListRecursive (ListNode headNode) {
 
         if (headNode == null) {
             System.out.println();
@@ -62,7 +60,7 @@ class LinkedListUtil {
         printLinkedListRecursive(headNode.next);
     }
 
-    public ListNode insertNodeAtPositionRecursive (ListNode headNode, int position, int data) {
+    public default ListNode insertNodeAtPositionRecursive (ListNode headNode, int position, int data) {
 
         if (position < 1) {
             System.out.println("Position cannot be less than 1");
@@ -88,7 +86,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public ListNode insertNodeAtPositionIterative (ListNode headNode, int position, int data) {
+    public default ListNode insertNodeAtPositionIterative (ListNode headNode, int position, int data) {
 
         if (position < 1) {
             System.out.println("Position cannot be less than 1");
@@ -117,7 +115,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public ListNode deleteLastNodeIterative (ListNode headNode) {
+    public default ListNode deleteLastNodeIterative (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return null;
@@ -131,7 +129,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public ListNode deleteFirstNode (ListNode headNode) {
+    public default ListNode deleteFirstNode (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return null;
@@ -139,7 +137,7 @@ class LinkedListUtil {
         return headNode.next;
     }
 
-    public ListNode deleteNodeAtPositionRecursive (ListNode headNode, int position) {
+    public default ListNode deleteNodeAtPositionRecursive (ListNode headNode, int position) {
 
         if (position < 0) {
             System.out.println("Position can't be negative");
@@ -159,7 +157,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public ListNode deleteNodeAtPositionIterative (ListNode headNode, int position) {
+    public default ListNode deleteNodeAtPositionIterative (ListNode headNode, int position) {
 
         if (position < 0) {
             System.out.println("Position can't be negative");
@@ -189,7 +187,7 @@ class LinkedListUtil {
         return headNode;
     }
 
-    public int lengthOfLinkedListRecursive (ListNode headNode) {
+    public default int lengthOfLinkedListRecursive (ListNode headNode) {
 
         if (headNode == null) {
             return 0;
@@ -197,7 +195,7 @@ class LinkedListUtil {
         return 1 + lengthOfLinkedListRecursive(headNode.next);
     }
 
-    public int lengthOfLinkedListIterative (ListNode headNode) {
+    public default int lengthOfLinkedListIterative (ListNode headNode) {
 
         if (headNode == null) {
             return 0;
@@ -211,7 +209,7 @@ class LinkedListUtil {
         return count;
     }
 
-    public boolean searchInLinkedListRecursive (ListNode headNode, int key) {
+    public default boolean searchInLinkedListRecursive (ListNode headNode, int key) {
 
         if (headNode == null) {
             return false;
@@ -223,7 +221,7 @@ class LinkedListUtil {
         return searchInLinkedListRecursive(headNode.next, key);
     }
 
-    public boolean searchInLinkedListIterative (ListNode headNode, int key) {
+    public default boolean searchInLinkedListIterative (ListNode headNode, int key) {
 
         if (headNode == null) {
             return false;
@@ -243,7 +241,7 @@ class LinkedListUtil {
         return false;
     }
 
-    public ListNode reverseLinkedListRecursive (ListNode headNode) {
+    public default ListNode reverseLinkedListRecursive (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return headNode;
@@ -256,7 +254,7 @@ class LinkedListUtil {
         return tempNode;
     }
 
-    public ListNode reverseLinkedListIterative (ListNode headNode) {
+    public default ListNode reverseLinkedListIterative (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return headNode;
@@ -275,7 +273,7 @@ class LinkedListUtil {
         return prevNode;
     }
 
-    public ListNode getMiddleNodeOfLinkedList (ListNode headNode) {
+    public default ListNode getMiddleNodeOfLinkedList (ListNode headNode) {
 
         if (headNode == null) {
             return headNode;
@@ -292,7 +290,7 @@ class LinkedListUtil {
         return slowPtr;
     }
 
-    public ListNode sortLinkedList (ListNode headNode) {
+    public default ListNode sortLinkedList (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return headNode;
@@ -305,7 +303,7 @@ class LinkedListUtil {
         return performMergeAndSort (sortLinkedList(headNode), sortLinkedList(secondHalf));
     }
 
-    public ListNode performMergeAndSort (ListNode firstHalf, ListNode secondHalf) {
+    public default ListNode performMergeAndSort (ListNode firstHalf, ListNode secondHalf) {
 
         ListNode tempNode = new ListNode();
         ListNode result = tempNode;
@@ -337,7 +335,7 @@ class LinkedListUtil {
         return result.next;
     }
 
-    public void printLinkedListIterative (ListNode headNode) {
+    public default void printLinkedListIterative (ListNode headNode) {
 
         if (headNode == null) {
             return;
@@ -351,7 +349,7 @@ class LinkedListUtil {
         System.out.println();
     }
     
-    public ListNode deleteMiddleOfLL (ListNode headNode) {
+    public default ListNode deleteMiddleOfLL (ListNode headNode) {
 
         if (headNode == null || headNode.next == null) {
             return null;
@@ -372,12 +370,12 @@ class LinkedListUtil {
     }
 }
 
-public class LinkedListADT {
+public class LinkedListADT implements LinkedListUtil{
 
     public static void main(String[] args) {
 
         ListNode headNode = null;
-        LinkedListUtil linkedListUtil = new LinkedListUtil();
+        LinkedListADT linkedListUtil = new LinkedListADT();
         headNode = linkedListUtil.insertAtEndIterative(headNode, 12);
         headNode = linkedListUtil.insertAtEndRecursive(headNode, 99);
         headNode = linkedListUtil.insertAtEndIterative(headNode, 37);

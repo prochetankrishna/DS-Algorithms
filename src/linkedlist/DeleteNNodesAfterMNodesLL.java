@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class DeleteNNodesAfterMNodesLL extends LinkedListUtil{
+public class DeleteNNodesAfterMNodesLL implements LinkedListUtil{
 
     public static void main(String[] args) {
 

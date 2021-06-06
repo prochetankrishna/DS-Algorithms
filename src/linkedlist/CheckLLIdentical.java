@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class CheckLLIdentical extends LinkedListUtil{
+public class CheckLLIdentical implements LinkedListUtil{
 
     public static void main(String[] args) {
         CheckLLIdentical linkedListUtil = new CheckLLIdentical();

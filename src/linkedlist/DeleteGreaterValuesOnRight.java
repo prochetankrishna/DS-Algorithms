@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class DeleteGreaterValuesOnRight extends LinkedListUtil{
+public class DeleteGreaterValuesOnRight implements LinkedListUtil{
 
     public static void main(String[] args) {
 

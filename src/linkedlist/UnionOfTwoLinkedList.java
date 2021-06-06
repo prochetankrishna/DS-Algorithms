@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class UnionOfTwoLinkedList extends LinkedListUtil{
+public class UnionOfTwoLinkedList implements LinkedListUtil{
 
     public static void main(String[] args) {
 

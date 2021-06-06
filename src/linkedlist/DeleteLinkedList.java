@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class DeleteLinkedList extends LinkedListUtil{
+public class DeleteLinkedList implements LinkedListUtil{
 
     public static void main(String[] args) {
 

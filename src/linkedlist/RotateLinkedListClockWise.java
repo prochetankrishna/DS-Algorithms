@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class RotateLinkedListClockWise extends LinkedListUtil {
+public class RotateLinkedListClockWise implements LinkedListUtil {
 
     public static void main(String[] args) {
 

@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class KThNodeFromEndLL extends LinkedListUtil{
+public class KThNodeFromEndLL implements LinkedListUtil{
 
     public static void main(String[] args) {
         KThNodeFromEndLL linkedListUtil = new KThNodeFromEndLL();

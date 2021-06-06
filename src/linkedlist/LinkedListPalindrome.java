@@ -2,19 +2,20 @@ package linkedlist;
 
 import java.util.Stack;
 
-public class LinkedListPalindrome {
+public class LinkedListPalindrome implements LinkedListUtil{
 
     public static void main(String[] args) {
 
-        LinkedList<Character> linkedList = new LinkedList<>();
-        linkedList.insertAtBeginning('R');
-        linkedList.insertAtBeginning('A');
-        linkedList.insertAtBeginning('D');
-        linkedList.insertAtBeginning('A');
-        linkedList.insertAtBeginning('R');
+        LinkedListPalindrome linkedListUtil = new LinkedListPalindrome();
+        ListNode headNode = null;
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 1);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 2);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 3);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 2);
+        headNode = linkedListUtil.insertAtEndIterative(headNode, 1);
 
-        linkedList.printLinkedList();
-        if (checkPalindrome(linkedList)) {
+        linkedListUtil.printLinkedListIterative(headNode);
+        if (checkPalindrome(headNode)) {
             System.out.println("Linked List is Palindrome");
         } else {
             System.out.println("Linked List is not Palindrome");
@@ -46,23 +47,23 @@ public class LinkedListPalindrome {
         }
     }*/
 
-    private static boolean checkPalindrome (LinkedList <Character> linkedList) {
+    private static boolean checkPalindrome (ListNode headNode) {
 
-        if (linkedList.head == null) {
+        if (headNode == null) {
             return true;
         }
 
-        Stack<Character> stack = new Stack<>();
-        LinkedList<Character>.LinkNode<Character> temp = linkedList.getHead();
+        Stack<Integer> stack = new Stack<>();
+        ListNode temp = headNode;
 
         while (temp != null) {
             stack.push (temp.data);
             temp = temp.next;
         }
 
-        temp = linkedList.getHead();
+        temp = headNode;
         while (temp != null) {
-            if (temp.data.equals(stack.peek())) {
+            if (temp.data == stack.peek()) {
                 stack.pop();
                 temp = temp.next;
             } else {

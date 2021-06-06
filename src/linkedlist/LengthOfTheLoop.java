@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class LengthOfTheLoop extends LinkedListUtil{
+public class LengthOfTheLoop implements LinkedListUtil{
 
     public static void main(String[] args) {
 

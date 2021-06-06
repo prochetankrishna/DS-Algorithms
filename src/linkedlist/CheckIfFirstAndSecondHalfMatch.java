@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class CheckIfFirstAndSecondHalfMatch extends LinkedListUtil{
+public class CheckIfFirstAndSecondHalfMatch implements LinkedListUtil{
 
     public static void main(String[] args) {
         

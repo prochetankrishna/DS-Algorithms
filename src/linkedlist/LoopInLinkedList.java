@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class LoopInLinkedList extends LinkedListUtil{
+public class LoopInLinkedList implements LinkedListUtil{
 
     public static void main(String[] args) {
 
