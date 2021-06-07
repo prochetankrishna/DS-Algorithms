@@ -57,7 +57,7 @@ public class MirrorTreeConversion implements BinaryTreeUtil{
     public TreeNode createMirrorTreeIterative (TreeNode rootNode) {
 
         if (rootNode == null) {
-            return rootNode;
+            return null;
         }
 
         Queue<TreeNode> queue = new LinkedList<>();
