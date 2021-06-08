@@ -229,6 +229,38 @@ interface BinaryTreeUtil {
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
+    public default int getHeightOfTreeIterative (TreeNode rootNode) {
+
+        if (rootNode == null) {
+            return -1;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(rootNode);
+        int numberOfLevel = -1;
+
+        while (!queue.isEmpty()) {
+
+            int queueSize = queue.size();
+            numberOfLevel++;
+
+            while (queueSize > 0) {
+                TreeNode tempNode = queue.poll();
+
+                if (tempNode.left != null) {
+                    queue.offer(tempNode.left);
+                }
+
+                if (tempNode.right != null) {
+                    queue.offer (tempNode.right);
+                }
+                queueSize--;
+            }
+        }
+        return numberOfLevel;
+    }
+
+
     public default void printElementsAtGivenLevel (TreeNode rootNode, int level) {
 
         if (rootNode == null) {
@@ -416,6 +448,7 @@ public class BinaryTreeApp implements BinaryTreeUtil{
         System.out.println("Total Number of Leaf Nodes : " + binaryTreeUtil.getTotalNumberOfLeafNodes(rootNode));
 
         System.out.println("Height of Tree : " + binaryTreeUtil.getHeightOfTree(rootNode));
+        System.out.println("Height of Tree : " + binaryTreeUtil.getHeightOfTreeIterative(rootNode));
 
         System.out.println("Print Tree At Level : 4");
         binaryTreeUtil.printElementsAtGivenLevel(rootNode, 4);
