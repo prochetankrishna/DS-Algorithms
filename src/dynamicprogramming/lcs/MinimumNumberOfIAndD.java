@@ -4,8 +4,8 @@ public class MinimumNumberOfIAndD {
 
     public static void main(String[] args) {
 
-        String X = "HEAP";
-        String Y = "PEA";
+        String X = "BA";  //HEAP
+        String Y = "BU";   //PEA
 
         int lengthOfX = X.length();
         int lengthOfY = Y.length();
