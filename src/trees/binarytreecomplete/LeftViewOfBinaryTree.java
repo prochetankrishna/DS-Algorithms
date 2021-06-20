@@ -1,5 +1,8 @@
 package trees.binarytreecomplete;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class LeftViewOfBinaryTree implements BinaryTreeUtil{
 
     int maxLevel;
@@ -19,11 +22,13 @@ public class LeftViewOfBinaryTree implements BinaryTreeUtil{
 
         System.out.print("Left View Of Tree : ");
         binaryTreeUtil.maxLevel = 0;
-        binaryTreeUtil.printLeftViewOfTree(rootNode, 0);
+        binaryTreeUtil.printLeftViewOfTreeRecursive(rootNode, 0);
         System.out.println();
+        System.out.print("Left View Of Tree : ");
+        binaryTreeUtil.printLeftViewOfTreeIterative(rootNode);
     }
 
-    public void printLeftViewOfTree (TreeNode rootNode, int currentLevel) {
+    public void printLeftViewOfTreeRecursive (TreeNode rootNode, int currentLevel) {
 
         if (rootNode == null) {
             return;
@@ -34,7 +39,38 @@ public class LeftViewOfBinaryTree implements BinaryTreeUtil{
             maxLevel++;
         }
 
-        printLeftViewOfTree(rootNode.left, currentLevel + 1);
-        printLeftViewOfTree(rootNode.right, currentLevel + 1);
+        printLeftViewOfTreeRecursive(rootNode.left, currentLevel + 1);
+        printLeftViewOfTreeRecursive(rootNode.right, currentLevel + 1);
+    }
+
+    public void printLeftViewOfTreeIterative (TreeNode rootNode) {
+
+        if (rootNode == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(rootNode);
+
+        while (!queue.isEmpty()) {
+
+            int queueSize = queue.size();
+            for (int i = 1; i <= queueSize; i++) {
+
+                TreeNode tempNode = queue.poll();
+
+                if (i == 1) {
+                    System.out.print(tempNode.data + " ");
+                }
+
+                if (tempNode.left != null) {
+                    queue.offer(tempNode.left);
+                }
+
+                if (tempNode.right != null) {
+                    queue.offer(tempNode.right);
+                }
+            }
+        }
     }
 }

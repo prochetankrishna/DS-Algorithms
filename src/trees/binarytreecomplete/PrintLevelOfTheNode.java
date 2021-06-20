@@ -21,7 +21,7 @@ public class PrintLevelOfTheNode implements BinaryTreeUtil{
         binaryTreeUtil.printLevelOrderTraversalLineByLine(rootNode);
         System.out.println();
 
-        binaryTreeUtil.currentLevel = 1;
+        binaryTreeUtil.currentLevel = 0;
         System.out.println("Level : " + binaryTreeUtil.getLevelOfTheNodeIfExists(rootNode, 11, binaryTreeUtil.currentLevel));
     }
 

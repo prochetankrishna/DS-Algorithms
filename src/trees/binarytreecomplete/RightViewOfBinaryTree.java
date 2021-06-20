@@ -1,5 +1,8 @@
 package trees.binarytreecomplete;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class RightViewOfBinaryTree implements BinaryTreeUtil{
 
     int maxLevel;
@@ -20,11 +23,13 @@ public class RightViewOfBinaryTree implements BinaryTreeUtil{
 
         System.out.print("Right View Of Tree : ");
         binaryTreeUtil.maxLevel = 0;
-        binaryTreeUtil.printRightViewOfTree(rootNode, 0);
+        binaryTreeUtil.printRightViewOfTreeRecursive(rootNode, 0);
         System.out.println();
+        System.out.print("Right View Of Tree : ");
+        binaryTreeUtil.printRightViewOfTreeIterative(rootNode);
     }
 
-    public void printRightViewOfTree (TreeNode rootNode, int currentLevel) {
+    public void printRightViewOfTreeRecursive (TreeNode rootNode, int currentLevel) {
 
         if (rootNode == null) {
             return;
@@ -35,7 +40,38 @@ public class RightViewOfBinaryTree implements BinaryTreeUtil{
             maxLevel++;
         }
 
-        printRightViewOfTree(rootNode.right, currentLevel + 1);
-        printRightViewOfTree(rootNode.left, currentLevel + 1);
+        printRightViewOfTreeRecursive(rootNode.right, currentLevel + 1);
+        printRightViewOfTreeRecursive(rootNode.left, currentLevel + 1);
+    }
+
+    public void printRightViewOfTreeIterative (TreeNode rootNode) {
+
+        if (rootNode == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(rootNode);
+
+        while (!queue.isEmpty()) {
+
+            int queueSize = queue.size();
+            for (int i = 1; i <= queueSize; i++) {
+
+                TreeNode tempNode = queue.poll();
+
+                if (i == 1) {
+                    System.out.print(tempNode.data + " ");
+                }
+
+                if (tempNode.right != null) {
+                    queue.offer(tempNode.right);
+                }
+
+                if (tempNode.left != null) {
+                    queue.offer(tempNode.left);
+                }
+            }
+        }
     }
 }
