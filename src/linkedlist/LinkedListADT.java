@@ -153,7 +153,7 @@ interface LinkedListUtil {
             return headNode.next;
         }
 
-        headNode.next = deleteNodeAtPositionRecursive(headNode.next, position -1);
+        headNode.next = deleteNodeAtPositionRecursive(headNode.next, position - 1);
         return headNode;
     }
 

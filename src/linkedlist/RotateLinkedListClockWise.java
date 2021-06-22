@@ -39,7 +39,7 @@ public class RotateLinkedListClockWise implements LinkedListUtil {
         }
 
         ListNode nextNode = tempNode.next;
-        ListNode newRootNode = nextNode;
+        ListNode newHeadNode = nextNode;
         tempNode.next = null;
 
         while (nextNode.next != null) {
@@ -47,6 +47,6 @@ public class RotateLinkedListClockWise implements LinkedListUtil {
         }
 
         nextNode.next = headNode;
-        return newRootNode;
+        return newHeadNode;
     }
 }
