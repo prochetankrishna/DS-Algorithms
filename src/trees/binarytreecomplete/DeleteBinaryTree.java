@@ -1,9 +1,11 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class DeleteBinaryTree implements BinaryTreeUtil{
+public class DeleteBinaryTree implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

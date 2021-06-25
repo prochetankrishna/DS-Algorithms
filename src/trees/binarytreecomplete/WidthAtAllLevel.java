@@ -1,5 +1,7 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -13,7 +15,7 @@ class WidthLevel {
         this.level = level;
     }
 }
-public class WidthAtAllLevel implements BinaryTreeUtil{
+public class WidthAtAllLevel implements BinaryTreeUtil {
 
     public static void main(String[] args) {
         WidthAtAllLevel binaryTreeUtil = new WidthAtAllLevel();

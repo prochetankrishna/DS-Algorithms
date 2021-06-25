@@ -1,11 +1,13 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class VerticalSumOfBinaryTree implements BinaryTreeUtil{
+public class VerticalSumOfBinaryTree implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

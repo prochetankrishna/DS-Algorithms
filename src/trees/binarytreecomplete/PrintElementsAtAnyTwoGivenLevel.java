@@ -1,9 +1,11 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PrintElementsAtAnyTwoGivenLevel implements BinaryTreeUtil{
+public class PrintElementsAtAnyTwoGivenLevel implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

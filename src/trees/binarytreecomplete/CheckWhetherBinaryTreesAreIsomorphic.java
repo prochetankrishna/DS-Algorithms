@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class CheckWhetherBinaryTreesAreIsomorphic implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class CheckWhetherBinaryTreesAreIsomorphic implements BinaryTreeUtil {
 
     public static void main(String[] args) {
         CheckWhetherBinaryTreesAreIsomorphic binaryTreeUtil = new CheckWhetherBinaryTreesAreIsomorphic();

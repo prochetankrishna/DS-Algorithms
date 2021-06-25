@@ -1,9 +1,11 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class RightViewOfBinaryTree implements BinaryTreeUtil{
+public class RightViewOfBinaryTree implements BinaryTreeUtil {
 
     int maxLevel;
 

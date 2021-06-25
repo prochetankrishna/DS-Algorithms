@@ -1,10 +1,12 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 class Height {
     int value;
 }
 
-public class CheckWhetherHeightBalancedTree implements BinaryTreeUtil{
+public class CheckWhetherHeightBalancedTree implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

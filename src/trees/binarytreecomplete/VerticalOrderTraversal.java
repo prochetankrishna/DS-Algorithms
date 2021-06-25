@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +12,7 @@ class Value {
     int min, max;
 }
 
-public class VerticalOrderTraversal implements BinaryTreeUtil{
+public class VerticalOrderTraversal implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class SumOfAllNumbersFormedFromRootToLeaf implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class SumOfAllNumbersFormedFromRootToLeaf implements BinaryTreeUtil {
 
     int totalSum = 0;
     public static void main(String[] args) {

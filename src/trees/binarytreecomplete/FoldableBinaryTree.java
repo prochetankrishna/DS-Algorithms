@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class FoldableBinaryTree implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class FoldableBinaryTree implements BinaryTreeUtil {
 
     public static void main(String[] args) {
         FoldableBinaryTree binaryTreeUtil = new FoldableBinaryTree();

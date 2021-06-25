@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class PrintRootToLeafAllPath implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class PrintRootToLeafAllPath implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

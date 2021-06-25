@@ -1,11 +1,13 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
-public class SumOfElementsLevelWise implements BinaryTreeUtil{
+public class SumOfElementsLevelWise implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

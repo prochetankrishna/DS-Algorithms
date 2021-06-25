@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class CheckWhetherBinaryTreesAreMirror implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class CheckWhetherBinaryTreesAreMirror implements BinaryTreeUtil {
 
     public static void main(String[] args) {
         CheckWhetherBinaryTreesAreMirror binaryTreeUtil = new CheckWhetherBinaryTreesAreMirror();

@@ -1,10 +1,10 @@
 package trees.binarytreecomplete;
 
-import trees.binarytrees.BinaryTree;
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
 
 import java.util.Stack;
 
-public class SpiralOrderTraversal implements BinaryTreeUtil{
+public class SpiralOrderTraversal implements BinaryTreeUtil {
 
     public static void main(String[] args) {
         SpiralOrderTraversal binaryTreeUtil = new SpiralOrderTraversal();

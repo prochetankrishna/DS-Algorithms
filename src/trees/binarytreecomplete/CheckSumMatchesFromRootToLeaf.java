@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class CheckSumMatchesFromRootToLeaf implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class CheckSumMatchesFromRootToLeaf implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

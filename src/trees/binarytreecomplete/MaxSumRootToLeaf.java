@@ -1,6 +1,8 @@
 package trees.binarytreecomplete;
 
-public class MaxSumRootToLeaf implements BinaryTreeUtil{
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
+public class MaxSumRootToLeaf implements BinaryTreeUtil {
 
     public static void main(String[] args) {
 

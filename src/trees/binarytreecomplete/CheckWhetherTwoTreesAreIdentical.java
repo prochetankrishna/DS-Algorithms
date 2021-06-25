@@ -1,8 +1,10 @@
 package trees.binarytreecomplete;
 
+import trees.binarytreecomplete.interfaces.BinaryTreeUtil;
+
 import java.util.Stack;
 
-public class CheckWhetherTwoTreesAreIdentical implements BinaryTreeUtil{
+public class CheckWhetherTwoTreesAreIdentical implements BinaryTreeUtil {
 
     public static void main(String[] args) {
         
