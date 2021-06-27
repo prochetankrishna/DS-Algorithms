@@ -8,17 +8,16 @@ public class MinHeapImplementation {
     public void insertNewValue (int val) {
         heapArr[size] = val;
 
-        int index = size;
-        int parent = (index - 1) / 2;
+        int indexOfInsertedElement = size;
+        int parentIndex = (indexOfInsertedElement - 1) / 2;
 
-        while (parent >= 0 && heapArr[parent] > heapArr[index]) {
-            int temp = heapArr[parent];
-            heapArr[parent] = heapArr[index];
-            heapArr[index] = temp;
+        while (parentIndex >= 0 && heapArr[parentIndex] > heapArr[indexOfInsertedElement]) {
+            int temp = heapArr[parentIndex];
+            heapArr[parentIndex] = heapArr[indexOfInsertedElement];
+            heapArr[indexOfInsertedElement] = temp;
 
-            temp = parent;
-            index = parent;
-            parent = (temp - 1) / 2;
+            indexOfInsertedElement = parentIndex;
+            parentIndex = (parentIndex - 1) / 2;
         }
         size++;
     }

@@ -6,19 +6,18 @@ public class MaxHeapImplementation {
     int[] heapArr = new int[1000];
 
     public void insertNewValue (int val) {
+
         heapArr[size] = val;
+        int indexOfInsertedElement = size;
+        int parentIndex = (indexOfInsertedElement - 1) / 2;
 
-        int index = size;
-        int parent = (index - 1) / 2;
+        while (parentIndex >= 0 && heapArr[parentIndex] < heapArr[indexOfInsertedElement]) {
+            int temp = heapArr[parentIndex];
+            heapArr[parentIndex] = heapArr[indexOfInsertedElement];
+            heapArr[indexOfInsertedElement] = temp;
 
-        while (parent >= 0 && heapArr[parent] < heapArr[index]) {
-            int temp = heapArr[parent];
-            heapArr[parent] = heapArr[index];
-            heapArr[index] = temp;
-
-            temp = parent;
-            index = parent;
-            parent = (temp - 1) / 2;
+            indexOfInsertedElement = parentIndex;
+            parentIndex = (parentIndex - 1) / 2;
         }
         size++;
     }
